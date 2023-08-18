@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<title th:text="${titulo}"></title>
+<head th:replace="~{layout/layout2 :: headerNavigation}"></head>
+<div class="container">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" th:href="@{/css/styles.css}">
+    <form id="contact" th:action="@{/productos/{id}(id=${producto.id})}" th:object="${producto}" method="POST" enctype="multipart/form-data">
+     
+        <h3>Editar Producto</h3>
+        
+        <fieldset>
+            <input placeholder= "detalle: " type="text" th:field="*{detalle}" tabindex="3" required>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('detalle')}" th:errors="*{descripcion}"></small>
+        </fieldset>
+        <fieldset>
+            <input placeholder= "marca: " type="text" th:field="*{marca}" tabindex="3" required>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}"></small>
+        </fieldset>
+        <fieldset>
+            <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Guardar</button>
+        </fieldset>
+    </form>
+
+
+</div>
+</body>
+</html>

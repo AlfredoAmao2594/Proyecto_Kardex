@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="~{layout/layout :: head}"></head>
+<h1 class="text secondary border border-success" th:text="${titulo}"></h1>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<meta charset="UTF-8"/>
+<body>
+<header th:replace="~{layout/layout :: header}"></header>
+<div class="container py-4">
+    <div class="card bg-light">
+        <div class="card-body">
+            <h4 class="card-title"><p>LISTADO DE PRODUCTOS</p>
+                <a class="btn btn-info"  th:href="@{/productos/create}" >Crear producto</a>
+            </h4>
+
+            <table class="table">
+                <div>
+                    <form class="form-inline" th:action="@{/productos}">
+                        <div class="form-group mb-2">
+                            <input type="text" class="form-control" name="palabraClave" id="palabraClave" th:value="${palabraClave}" placeholder="Buscar por nombre">
+                        </div>
+                        &nbsp;
+                        <input type="submit" class="btn btn-primary mb-3" value="Buscar">
+                    </form>
+                </div>
+                <thead>
+                <tr>
+                    <th>ID: </th>
+                    <th>DETALLE: </th>
+                    <th>MARCA: </th>
+                </tr>
+                </thead>
+            
+                <tbody>
+                <tr th:each="producto: ${productos}">
+                    <td th:text="${producto.id}"></td>
+                    <td th:text="${producto.detalle}"></td>
+                    <td th:text="${producto.marca}"></td>
+                    <td><a th:href="@{/productos/{id}/edit(id=${producto.id})}" class="btn btn-warning" th:text="editar"></a></td>
+                    <td><a th:href="@{/productos/{id}/delete(id=${producto.id})}" class="btn btn-info" th:text="eliminar" ></a></td>
+                    <td><a class="btn btn-info" th:text="informacion"></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+
+
+</html>

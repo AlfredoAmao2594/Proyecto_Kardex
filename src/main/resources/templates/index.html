@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Menu Principal</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <nav class="navbar navbar-expand-lg bg-info navbar-dark">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="#">INVENTARIO</a>
+
+            <!-- Icons -->
+            <ul class="navbar-nav d-flex flex-row me-1">
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link text-white" th:href="@{/contact}"><i class="fas fa-envelope mx-1"></i>CONTACTO</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown1" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false"> <i class="fas fa-cog mx-1"></i>CONFIGURACION </a>
+                    <!-- Dropdown menu -->
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1">
+                        <li>
+                            <a class="dropdown-item" th:href="@{/usuarios}">USUARIOS</a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="#">PERMISOS</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">OTROS</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown2" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false"> <i class="fas fa-user mx-1"></i> PERFIL</a>
+                    <!-- Dropdown menu -->
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown2">
+                        <li>
+                            <a class="dropdown-item" href="#">MI CUENTA</a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" th:href="@{/logout}">LOG OUT</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</head>
+<body>
+    <main role="main">
+        <div class="album py-5 bg-light">
+            <section class="jumbotron text-center">
+                <div class="container">
+                    <h1 class="jumbotron-heading">Bienvenido al sistema de gestion de inventarios</h1>
+                </div>
+            </section>
+            <div class="container">
+                <div class="row">
+                    <div class="album py-5 bg-light">
+                        <div class="container">
+    
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card mb-4 box-shadow">
+                                        <img class="card-img-top" src="img/shopping-cart.png" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h2 class="text-dark">PRODUCTOS</h2>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <a th:href="@{/productos}" type="button"
+                                                       class="btn btn-sm btn-outline-secondary">Listado de productos</a>
+                                                    <a th:href="@{/productos/create}" type="button"
+                                                       class="btn btn-sm btn-outline-secondary">Agregar producto</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card mb-4 box-shadow">
+                                        <img class="card-img-top" src="img/postman.png" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h2 class="text-dark">PROVEEDORES</h2>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <a th:href="@{/proveedores/create}" type="button"
+                                                       class="btn btn-sm btn-outline-secondary">Crear proveedor</a>
+                                                    <a th:href="@{/proveedores}" type="button"
+                                                       class="btn btn-sm btn-outline-secondary">Listar</a>
+                                                </div>
+                                                <small class="text-muted">9 mins</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="col-md-4">
+                                    <div class="card mb-4 box-shadow">
+                                        <img class="card-img-top" src="img/handshake.png" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h2 class="text-dark">CLIENTES</h2>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <a th:href="@{/clientes/create}" class="btn btn-sm btn-outline-secondary">Crear
+                                                        cliente</a>
+                                                    <a th:href="@{/clientes}" class="btn btn-sm btn-outline-secondary">Listado
+                                                        cliente</a>
+                                                </div>
+                                                <small class="text-muted">9 mins</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card mb-4 box-shadow">
+                                        <img class="card-img-top" src="img/save-money.png" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h2 class="text-dark">NOTAS</h2>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <a th:href="@{notas/list}" class="btn btn-sm btn-outline-secondary">LISTADO
+                                                    </a>
+                                                </div>
+                                                <small class="text-muted">9 mins</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card mb-4 box-shadow">
+                                        <img class="card-img-top" src="img/truck.png" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h2 class="card-text">REPORTE</h2>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <a th:href="@{notas/reportes}" class="btn btn-sm btn-outline-secondary">LISTAR</a>
+                                                </div>
+                                                <small class="text-muted">9 mins</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    
+    </main>
+    <footer class="text-muted">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <ul class="list-inline text-center">
+                        <li class="list-inline-item">
+                            <a href="www.gmail.com"></a>
+                            <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                            </a>
+
+                        </li>
+                        <li class="list-inline-item">
+
+              
+                                    <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                            </a>
+
+                        </li>
+                        <li class="list-inline-item">
+                       
+                                    <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                            </a>
+
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; 2023 </p>
+                </div>
+            </div>
+        </div>
+</footer>
+</body>
+</html>

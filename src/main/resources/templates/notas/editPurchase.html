@@ -1,0 +1,57 @@
+    <!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <title th:text="${titulo}"></title>
+    <head th:replace="~{layout/layout2 :: headerNavigation}"></head>
+    <div class="container">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css" th:href="@{/css/styles.css}">
+        <form id="contact" th:action="@{/notas/{id}(id=${nota.id})}" th:object="${nota}" method="POST" enctype="multipart/form-data">
+        
+            <h3>Editar Nota de Ingreso</h3>
+            <fieldset>
+                <input placeholder= "fecha: " type="date" th:field="*{fecha}" tabindex="3" required>
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></small>
+            </fieldset>
+            
+            <fieldset>
+                <select th:field="*{idProveedor}" tabindex="3" >
+                    <option th:each="Proveedor:${proveedores}" 
+                        th:value="${Proveedor.id}"
+                        th:text="${Proveedor.razonSocial}"
+                    />
+                </select>  
+            </fieldset>
+            <fieldset>
+                <select th:field="*{idTipoComprobante}" tabindex="3" >
+                    <option th:each="TipoComprobante:${comprobantes}" 
+                        th:value="${TipoComprobante.id}"
+                        th:text="${TipoComprobante.descripcion}"
+                    />
+                </select> 
+            </fieldset>
+            <fieldset>
+                <select th:field="*{idProducto}" tabindex="3" >
+                    <option th:each="Producto:${productos}" 
+                        th:value="${Producto.id}"
+                        th:text="${Producto.detalle+' '+Producto.marca}"
+                    />
+                </select> 
+            </fieldset>
+            <fieldset>
+                <input placeholder= "cantidad: " type="text" th:field="*{cantidad}" tabindex="3" required>
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"></small>
+            </fieldset>
+            <fieldset>
+                <input placeholder= "precio: " type="text" th:field="*{precio}" tabindex="3" required>
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></small>
+            </fieldset>
+        
+            <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Enviar</button>
+            </fieldset>
+        </form>
+    </div>
+    </body>
+    </html>

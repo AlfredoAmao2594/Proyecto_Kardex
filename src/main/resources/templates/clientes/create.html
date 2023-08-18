@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<title th:text="${titulo}"></title>
+<head th:replace="~{layout/layout2 :: headerNavigation}"></head>
+<div class="container">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" th:href="@{/css/styles.css}">
+    <form id="contact" th:action="@{/clientes}" th:object="${clienteForm}" method="POST" enctype="multipart/form-data">
+     
+        <h3>Registrar Cliente</h3>
+        <fieldset>
+            <select th:field="*{idTipoDocumento}" tabindex="3" >
+                <option th:each="TipoDocumento:${tipos}" 
+                    th:value="${TipoDocumento.id}"
+                    th:text="${TipoDocumento.descripcion}"
+                />
+            </select>  
+        </fieldset>
+        <fieldset>
+            <input placeholder= "numeroDocumento: " type="text" th:field="*{numeroDocumento}" tabindex="3" required>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('numeroDocumento')}" th:errors="*{numeroDocumento}"></small>
+        </fieldset>
+        <fieldset>
+            <input placeholder= "razonSocial: " type="text" th:field="*{razonSocial}" tabindex="3" required>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('razonSocial')}" th:errors="*{razonSocial}"></small>
+        </fieldset>
+        <fieldset>
+            <input placeholder= "pais: " type="text" th:field="*{pais}" tabindex="3" required>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></small>
+        </fieldset>
+        <fieldset>
+            <input placeholder= "ciudad: " type="text" th:field="*{ciudad}" tabindex="3" required>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}"></small>
+        </fieldset>
+        <fieldset>
+            <input placeholder= "direccion: " type="text" th:field="*{direccion}" tabindex="3" required>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></small>
+        </fieldset>
+        <fieldset>
+            <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Enviar</button>
+        </fieldset>
+    </form>
+
+
+</div>
+</body>
+</html>
